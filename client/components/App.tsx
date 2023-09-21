@@ -21,16 +21,16 @@ function App() {
 
     const granimInstance = new Granim({
       element: canvasRef.current,
-      direction: 'left-right',
+      direction: 'diagonal',
       isPausedWhenNotInView: true,
       states: {
         'default-state': {
           gradients: [
-            ['#833ab4', '#fd1d1d'],
-            ['#003973', '#e5e5be'],
-            ['#1f4037', '#99f2c8'],
+              ['#58bcc4', '#2094DA', '#254688'],
+              ['#1DBBED', '#265EB6', '#273172'],
+             ['#C979EB', '#6B56E9', '#3B2B7E'],
           ],
-          transitionSpeed: 5000,
+          transitionSpeed: 10000,
         },
       },
     })
