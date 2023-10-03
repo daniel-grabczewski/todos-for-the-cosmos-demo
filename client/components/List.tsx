@@ -60,7 +60,6 @@ function List() {
               alignItems: 'center',
               gap: '20px',
               margin: '0 10px',
-              color: element.isCompleted ? 'gray' : 'black',
               textDecoration: element.isCompleted ? 'line-through' : 'none',
             }}
             key={element.todo}
@@ -80,7 +79,7 @@ function List() {
               }}
             />
             <div style={{ width: '250px' }}>
-              <h2>{element.todo}</h2>
+              <p>{element.todo}</p>
             </div>
             <p>Priority: {element.priority}</p>
             <button onClick={() => handleDelete(element.id)} style={{ marginLeft: 'auto', marginRight: '10px' }}>
