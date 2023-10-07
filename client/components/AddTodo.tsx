@@ -2,18 +2,28 @@
 import React, { FormEvent, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { postTodoThenFetch } from '../slices/todos'
-import { executeReducerBuilderCallback } from '@reduxjs/toolkit/dist/mapBuilders'
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css'
 
 interface Form {
   todo: string
   priority: number
 }
 
+type CustomChangeEvent = {
+  target: {
+    name: string
+    value: string | number | number[]
+  }
+}
+
 function AddTodo() {
   const [form, setForm] = useState({ todo: '', priority: 3 } as Form)
   const dispatch = useAppDispatch()
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(
+    event: React.ChangeEvent<HTMLInputElement> | CustomChangeEvent
+  ) {
     if (event.target.name === 'priority') {
       // Convert the value to a number using parseInt or parseFloat
       const priority = Number(event.target.value)
@@ -59,25 +69,18 @@ function AddTodo() {
           <label htmlFor="priority">
             <h3>Priority:</h3>
           </label>
-          <input
-            onChange={handleChange}
-            type="range"
-            min="1"
-            max="5"
-            id="priority"
-            name="priority"
-            value={form.priority}
-            style={{
-               // Make the input take the full width of its container
-              height: '20px',
-              appearance: 'none', // Hide the default styling (applies to some browsers)
-              background: '#d8d8d8', // White background color
-              borderRadius: '12px', // Rounded corners
-              outline: 'none', // Remove outline when focused
-              boxShadow: 'inset 0 0 2px rgba(0, 0, 0, 0.2)', // Add a subtle box-shadow
-              cursor: 'pointer', // Show pointer cursor on hover
-              
+          <Slider
+            onChange={(value) => {
+              handleChange({
+                target: {
+                  name: 'priority',
+                  value: value,
+                },
+              })
             }}
+            min={1}
+            max={5}
+            value={form.priority}
           />
         </div>
         <div
