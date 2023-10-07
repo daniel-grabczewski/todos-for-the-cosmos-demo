@@ -9,7 +9,7 @@ body {
 
 
 button {
-  background-color: #03c988;
+  background-color: #005BB0;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -20,7 +20,7 @@ button {
 }
 
 button:hover {
-  background-color: #1c82ad;
+  background-color: #00A4BA;
 }
 
 input[type="checkbox"] {
