@@ -10,39 +10,34 @@ function List() {
 
   const [showing, setShowing] = useState('All')
 
-
-  //Making the delete button work.
-  //On the delete button, send through the associated id.
-  //Dispatch it through to the slice, and handle it through there.
-
   useEffect(() => {
     dispatch(fetchTodos())
   }, [])
 
   useEffect(() => {
-    setLocalTodos(todos);
-  }, [todos]);
+    setLocalTodos(todos)
+  }, [todos])
 
-  function handleDelete(id : number) {
+  function handleDelete(id: number) {
     dispatch(deleteTodo(id))
   }
 
   function handleCheck(id: number, event: React.ChangeEvent<HTMLInputElement>) {
     dispatch(checkboxTodo(id))
   }
-  
+
   function showAllHandler() {
     setLocalTodos(todos)
     setShowing('All')
   }
 
   function showActiveHandler() {
-    setLocalTodos(todos.filter(todo => todo.isCompleted == false))
+    setLocalTodos(todos.filter((todo) => todo.isCompleted == false))
     setShowing('Active')
   }
 
   function showCompletedHandler() {
-    setLocalTodos(todos.filter(todo => todo.isCompleted == true))
+    setLocalTodos(todos.filter((todo) => todo.isCompleted == true))
     setShowing('Completed')
   }
 
@@ -67,7 +62,7 @@ function List() {
               style={{
                 width: '20px',
                 height: '20px',
-                 // Set background color to green when checkbox is checked
+                // Set background color to green when checkbox is checked
                 border: '2px solid black', // Border color when checkbox is not checked
                 borderRadius: '3px',
                 cursor: 'pointer',
@@ -78,7 +73,10 @@ function List() {
               <p>{element.todo}</p>
             </div>
             <p>Priority: {element.priority}</p>
-            <button onClick={() => handleDelete(element.id)} style={{ marginLeft: 'auto', marginRight: '10px' }}>
+            <button
+              onClick={() => handleDelete(element.id)}
+              style={{ marginLeft: 'auto', marginRight: '10px' }}
+            >
               Delete
             </button>
           </div>
@@ -92,17 +90,11 @@ function List() {
             margin: '0 10px',
           }}
         >
-          <p>Items Left: {todos.length}</p>
+          <p>Showing:</p>
           <button onClick={showAllHandler}>All</button>
           <button onClick={showActiveHandler}>Active</button>
           <button onClick={showCompletedHandler}>Completed</button>
-          
         </div>
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'}}>
-              <p>Showing: {showing}</p></div>
       </div>
     </>
   )
