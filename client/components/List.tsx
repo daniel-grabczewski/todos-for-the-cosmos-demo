@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
-import { checkboxTodo, deleteTodo, fetchTodos, clearCompleted } from '../slices/todos'
+import { checkboxTodo, deleteTodo, fetchTodos } from '../slices/todos'
 
 function List() {
   const dispatch = useAppDispatch()
@@ -25,10 +25,6 @@ function List() {
 
   function handleDelete(id : number) {
     dispatch(deleteTodo(id))
-  }
-
-  function clearCompletedHandler() {
-    dispatch(clearCompleted())
   }
 
   function handleCheck(id: number, event: React.ChangeEvent<HTMLInputElement>) {
@@ -100,7 +96,6 @@ function List() {
           <button onClick={showAllHandler}>All</button>
           <button onClick={showActiveHandler}>Active</button>
           <button onClick={showCompletedHandler}>Completed</button>
-          <button onClick={clearCompletedHandler}>Clear completed</button>
           
         </div>
         <div style={{
