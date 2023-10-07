@@ -75,3 +75,44 @@ hr {
   height : 1.1px;
   border : none
 }
+
+/*!############## RC-SLIDER ##############!*/
+
+.slider-length {
+  width : 128px;
+}
+
+.rc-slider-track {
+  transition: width 0.3s ease;
+  background-color: rgba(242,242,242,0.10);
+  height: 4px; 
+}
+
+.rc-slider-rail {
+  background-color: rgba(242,242,242,0.55);
+  height: 4px; 
+}
+
+.rc-slider-handle {
+  transition: left 0.3s ease;
+  width: 20px; 
+  height: 20px; 
+  background-color: #ffffff;
+  border: none;
+  margin-top: -8px; 
+  opacity: 1;
+}
+
+
+.rc-slider-handle:focus {
+  outline: none;
+  box-shadow: none; 
+}
+
+.rc-slider-tooltip {
+  display: none !important;
+}
+
+.rc-slider-handle-dragging {
+  box-shadow : none !important;
+}

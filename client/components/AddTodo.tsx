@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 import { postTodoThenFetch } from '../slices/todos'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
+import '../styles/index.css'
 
 interface Form {
   todo: string
@@ -70,6 +71,7 @@ function AddTodo() {
             <h3>Priority:</h3>
           </label>
           <Slider
+          className = {'slider-length'}
             onChange={(value) => {
               handleChange({
                 target: {
