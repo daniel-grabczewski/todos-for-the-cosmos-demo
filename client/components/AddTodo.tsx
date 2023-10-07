@@ -46,6 +46,7 @@ function AddTodo() {
           onChange={handleChange}
           name="todo"
         />
+        <hr />
         <div
           style={{
             display: 'flex',
@@ -90,6 +91,7 @@ function AddTodo() {
             Add
           </button>
         </div>
+        <hr />
       </form>
     </>
   )

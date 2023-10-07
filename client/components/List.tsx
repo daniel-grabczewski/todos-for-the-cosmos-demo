@@ -85,6 +85,7 @@ function List() {
             </button>
           </div>
         ))}
+        <hr />
         <div
           style={{
             display: 'flex',

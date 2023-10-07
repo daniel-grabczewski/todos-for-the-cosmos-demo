@@ -69,3 +69,9 @@ input[type="checkbox"] {
 .priority-header {
   margin-right : 80px
 }
+
+hr {
+  background-color : #8B96A2;
+  height : 1.1px;
+  border : none
+}
