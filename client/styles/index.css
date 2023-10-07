@@ -50,3 +50,22 @@ input[type="checkbox"] {
   color: rgba(255, 255, 255, 0.596); 
   font-style: italic;  
 }
+
+.tasks-priority-headers-container {
+  display : flex;
+  justify-content: space-between;
+}
+
+.tasks-header, .priority-header {
+  font-style : italic;
+  font-size : 20px;
+  font-weight : 300;
+}
+
+.tasks-header {
+  margin-left : 45px; 
+}
+
+.priority-header {
+  margin-right : 80px
+}

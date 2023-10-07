@@ -44,6 +44,10 @@ function List() {
   return (
     <>
       <div>
+        <div className={'tasks-priority-headers-container'}>
+          <p className={'tasks-header'}>Tasks</p>
+          <p className={'priority-header'}>Priorities</p>
+        </div>
         {localTodos.map((element) => (
           <div
             style={{
@@ -72,7 +76,7 @@ function List() {
             <div style={{ width: '250px' }}>
               <p>{element.todo}</p>
             </div>
-            <p>Priority: {element.priority}</p>
+            <p>{element.priority}</p>
             <button
               onClick={() => handleDelete(element.id)}
               style={{ marginLeft: 'auto', marginRight: '10px' }}
