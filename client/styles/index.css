@@ -71,9 +71,9 @@ input[type="checkbox"] {
 }
 
 hr {
-  background-color : #8B96A2;
-  height : 1.1px;
-  border : none
+  background-color : #8B96A2 !important;
+  height : 0.9px !important;
+  border : none !important
 }
 
 /*!############## RC-SLIDER ##############!*/
