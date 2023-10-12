@@ -116,3 +116,10 @@ hr {
 .rc-slider-handle-dragging {
   box-shadow : none !important;
 }
+
+
+/*!############## SVG X Delete Button ##############!*/
+
+.rect-transition {
+  transition: fill 0.3s ease;
+}

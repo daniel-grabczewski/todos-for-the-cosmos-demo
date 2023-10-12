@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { checkboxTodo, deleteTodo, fetchTodos } from '../slices/todos'
+import '../styles/index.css'
+import ReactSVG from 'react-svg'
 
 function List() {
   const dispatch = useAppDispatch()
   const todos = useAppSelector((state) => state.todos)
+  const [isHovered, setIsHovered] = useState(false)
+  const fillColor = isHovered ? '#FF5050' : '#DADADA'
+  const [hoveredId, setHoveredId] = useState<number | null>(null)
 
   const [localTodos, setLocalTodos] = useState(todos)
 
@@ -77,12 +82,42 @@ function List() {
               <p>{element.todo}</p>
             </div>
             <p>{element.priority}</p>
-            <button
+            <div
               onClick={() => handleDelete(element.id)}
-              style={{ marginLeft: 'auto', marginRight: '10px' }}
+              onMouseOver={() => setHoveredId(element.id)}
+              onMouseOut={() => setHoveredId(null)}
+              style={{
+                marginLeft: 'auto',
+                marginRight: '10px',
+                cursor: 'pointer',
+                marginBottom : '-3px'
+              }}
             >
-              Delete
-            </button>
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  className="rect-transition"
+                  width="21.1396"
+                  height="2.5"
+                  rx="1.25"
+                  transform="matrix(0.707104 -0.707109 0.707104 0.707109 0.999756 15.6982)"
+                  fill={hoveredId === element.id ? '#FF5050' : '#DADADA'}
+                />
+                <rect
+                  className="rect-transition"
+                  width="21.1396"
+                  height="2.5"
+                  rx="1.25"
+                  transform="matrix(-0.707104 -0.707109 -0.707104 0.707109 17.3618 15.6982)"
+                  fill={hoveredId === element.id ? '#FF5050' : '#DADADA'}
+                />
+              </svg>
+            </div>
           </div>
         ))}
         <hr />
