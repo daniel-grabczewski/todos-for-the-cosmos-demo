@@ -50,8 +50,8 @@ function List() {
     <>
       <div>
         <div className={'tasks-priority-headers-container'}>
-          <p className={'tasks-header'}>Tasks</p>
-          <p className={'priority-header'}>Priorities</p>
+          <p className={'tasks-header'}>Task</p>
+          <p className={'priority-header'}>Priority</p>
         </div>
         {localTodos.map((element) => (
           <div
