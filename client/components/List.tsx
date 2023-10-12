@@ -2,18 +2,15 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { checkboxTodo, deleteTodo, fetchTodos } from '../slices/todos'
 import '../styles/index.css'
-import ReactSVG from 'react-svg'
 
 function List() {
   const dispatch = useAppDispatch()
   const todos = useAppSelector((state) => state.todos)
-  const [isHovered, setIsHovered] = useState(false)
-  const fillColor = isHovered ? '#FF5050' : '#DADADA'
   const [hoveredId, setHoveredId] = useState<number | null>(null)
 
   const [localTodos, setLocalTodos] = useState(todos)
 
-  const [showing, setShowing] = useState('All')
+  const [selectedButton, setSelectedButton] = useState('All')
 
   useEffect(() => {
     dispatch(fetchTodos())
@@ -33,17 +30,17 @@ function List() {
 
   function showAllHandler() {
     setLocalTodos(todos)
-    setShowing('All')
+    setSelectedButton('All')
   }
 
   function showActiveHandler() {
     setLocalTodos(todos.filter((todo) => todo.isCompleted == false))
-    setShowing('Active')
+    setSelectedButton('Active')
   }
 
   function showCompletedHandler() {
     setLocalTodos(todos.filter((todo) => todo.isCompleted == true))
-    setShowing('Completed')
+    setSelectedButton('Completed')
   }
 
   return (
@@ -71,8 +68,7 @@ function List() {
               style={{
                 width: '20px',
                 height: '20px',
-                // Set background color to green when checkbox is checked
-                border: '2px solid black', // Border color when checkbox is not checked
+                border: '2px solid black',
                 borderRadius: '3px',
                 cursor: 'pointer',
                 marginRight: '-5px',
@@ -90,7 +86,7 @@ function List() {
                 marginLeft: 'auto',
                 marginRight: '10px',
                 cursor: 'pointer',
-                marginBottom : '-3px'
+                marginBottom: '-3px',
               }}
             >
               <svg
@@ -131,9 +127,24 @@ function List() {
           }}
         >
           <p>Showing:</p>
-          <button onClick={showAllHandler}>All</button>
-          <button onClick={showActiveHandler}>Active</button>
-          <button onClick={showCompletedHandler}>Completed</button>
+          <button
+            onClick={showAllHandler}
+            className={selectedButton === 'All' ? 'selected-button' : ''}
+          >
+            All
+          </button>
+          <button
+            onClick={showActiveHandler}
+            className={selectedButton === 'Active' ? 'selected-button' : ''}
+          >
+            Active
+          </button>
+          <button
+            onClick={showCompletedHandler}
+            className={selectedButton === 'Completed' ? 'selected-button' : ''}
+          >
+            Completed
+          </button>
         </div>
       </div>
     </>
