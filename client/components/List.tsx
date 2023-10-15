@@ -46,87 +46,66 @@ function List() {
   return (
     <>
       <div>
-        <div className={'tasks-priority-headers-container'}>
-          <p className={'tasks-header'}>Task</p>
-          <p className={'priority-header'}>Priority</p>
+        <div className="tasks-priority-headers-container">
+          <p className="tasks-header">Task</p>
+          <p className="priority-header">Priority</p>
         </div>
-        {localTodos.map((element) => (
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '20px',
-              margin: '0 10px',
-              textDecoration: element.isCompleted ? 'line-through' : 'none',
-            }}
-            key={element.todo}
-          >
-            <input
-              type="checkbox"
-              checked={element.isCompleted}
-              onChange={(event) => handleCheck(element.id, event)}
-              style={{
-                width: '20px',
-                height: '20px',
-                border: '2px solid black',
-                borderRadius: '3px',
-                cursor: 'pointer',
-                marginRight: '-5px',
-              }}
-            />
-            <div style={{ width: '250px' }}>
-              <p>{element.todo}</p>
-            </div>
-            <p>{element.priority}</p>
+        <div className="added-todos-container">
+          {localTodos.map((element) => (
             <div
-              onClick={() => handleDelete(element.id)}
-              onMouseOver={() => setHoveredId(element.id)}
-              onMouseOut={() => setHoveredId(null)}
+            className = 'added-todo'
               style={{
-                marginLeft: 'auto',
-                marginRight: '10px',
-                cursor: 'pointer',
-                marginBottom: '-3px',
+                textDecoration: element.isCompleted ? 'line-through' : 'none',
               }}
+              key={element.todo}
             >
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 18 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                type="checkbox"
+                checked={element.isCompleted}
+                onChange={(event) => handleCheck(element.id, event)}
+                className = 'checkbox-container'
+              />
+              <div style={{ width: '375px' }}>
+                <p className="added-todo-text">{element.todo}</p>
+              </div>
+              <p className="added-todo-priority-number">{element.priority}</p>
+              <div
+                onClick={() => handleDelete(element.id)}
+                onMouseOver={() => setHoveredId(element.id)}
+                onMouseOut={() => setHoveredId(null)}
+                className = 'delete-button-container'
               >
-                <rect
-                  className="rect-transition"
-                  width="21.1396"
-                  height="2.5"
-                  rx="1.25"
-                  transform="matrix(0.707104 -0.707109 0.707104 0.707109 0.999756 15.6982)"
-                  fill={hoveredId === element.id ? '#FF5050' : '#DADADA'}
-                />
-                <rect
-                  className="rect-transition"
-                  width="21.1396"
-                  height="2.5"
-                  rx="1.25"
-                  transform="matrix(-0.707104 -0.707109 -0.707104 0.707109 17.3618 15.6982)"
-                  fill={hoveredId === element.id ? '#FF5050' : '#DADADA'}
-                />
-              </svg>
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    className="rect-transition"
+                    width="21.1396"
+                    height="2.5"
+                    rx="1.25"
+                    transform="matrix(0.707104 -0.707109 0.707104 0.707109 0.999756 15.6982)"
+                    fill={hoveredId === element.id ? '#FF5050' : '#DADADA'}
+                  />
+                  <rect
+                    className="rect-transition"
+                    width="21.1396"
+                    height="2.5"
+                    rx="1.25"
+                    transform="matrix(-0.707104 -0.707109 -0.707104 0.707109 17.3618 15.6982)"
+                    fill={hoveredId === element.id ? '#FF5050' : '#DADADA'}
+                  />
+                </svg>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
         <hr />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: '20px',
-            margin: '0 10px',
-          }}
-        >
-          <p>Showing:</p>
+        <div className="filter-controls-container">
+          <p className="showing-text">Showing:</p>
           <button
             onClick={showAllHandler}
             className={selectedButton === 'All' ? 'selected-button' : ''}
