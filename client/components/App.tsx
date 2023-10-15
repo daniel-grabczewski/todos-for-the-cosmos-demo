@@ -7,11 +7,9 @@ function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    // Remove any default margin and padding from the body
     document.body.style.margin = '0'
     document.body.style.padding = '0'
 
-    // Set the canvas to cover the full viewport
     if (canvasRef.current) {
       canvasRef.current.width = window.innerWidth
       canvasRef.current.height = window.innerHeight
@@ -40,7 +38,6 @@ function App() {
       yoyo: true,
       duration: 5,
       onUpdate: () => {
-        // You can change the Granim state or gradients here
       },
     })
 
