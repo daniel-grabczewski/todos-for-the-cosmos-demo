@@ -58,20 +58,12 @@ function AddTodo() {
           name="todo"
         />
         <hr />
-        <div
-          style={{
-            display: 'flex',
-            margin: '0 20px',
-            gap: '10px',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
+        <div className="change-priority-container">
           <label htmlFor="priority">
-            <h3>Priority:</h3>
+            <h3 className="change-priority-header">Priority:</h3>
           </label>
           <Slider
-          className = {'slider-length'}
+            className="slider-length"
             onChange={(value) => {
               handleChange({
                 target: {
@@ -85,13 +77,7 @@ function AddTodo() {
             value={form.priority}
           />
         </div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginBottom: '20px',
-          }}
-        >
+        <div className="change-priority-button-container">
           <button type="submit" style={{ alignContent: 'center' }}>
             Add
           </button>
