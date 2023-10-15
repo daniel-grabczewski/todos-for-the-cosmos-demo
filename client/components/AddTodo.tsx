@@ -52,7 +52,7 @@ function AddTodo() {
       <form onSubmit={handleSubmit}>
         <input
           className="new-todo"
-          placeholder="What needs to be done?"
+          placeholder="What does the universe require of you?"
           value={form.todo}
           onChange={handleChange}
           name="todo"
