@@ -196,6 +196,7 @@ button:hover {
 /*!############## RC-SLIDER ##############!*/
 
 .slider-length {
+  margin-top : 3px;
   width : 128px;
 }
 
