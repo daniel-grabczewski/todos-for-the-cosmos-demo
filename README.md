@@ -10,7 +10,3 @@
 - Navigate to [http://localhost:5173](http://localhost:5173) in your browser
 - Now you can start making Todo's!
 
-## Updates coming soon:
-- Styling overhaul
-- Addition of Music player
-
