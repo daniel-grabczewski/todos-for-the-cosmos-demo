@@ -1,7 +1,7 @@
 {
-  "name": "todos-for-the-cosmos",
+  "name": "todos-for-the-cosmos-demo",
   "version": "1.0.0",
-  "description": "Todos for the cosmos",
+  "description": "Todos for the cosmos Demo Version",
   "main": "server/index.js",
   "scripts": {
     "build": "run-s build:client build:server",
