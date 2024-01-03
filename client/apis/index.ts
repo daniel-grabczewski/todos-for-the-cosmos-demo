@@ -1,61 +1,63 @@
-import request from 'superagent'
-import { UpdatedTodo, NewTodo, UpdatedTodoPriority } from '../../models/Todo'
+import { NewTodo, Todo } from '../../models/Todo.js'
+import { initialTodos } from '../data/data.js'
 
-const baseUrl = '/api/v1/' // Replace with your base URL
+const TODO_STORAGE_KEY = 'todos'
 
-//--- GET REQUESTS ---//
-
-//GET ALL TODOS
-export function getAllTodos(): Promise<any> {
-  return request.get(`${baseUrl}`)
+// Initialize local storage with initial data
+if (!localStorage.getItem(TODO_STORAGE_KEY)) {
+  localStorage.setItem(TODO_STORAGE_KEY, JSON.stringify(initialTodos))
 }
 
-//GET A TODO GIVEN ITS ID
-export function getTodoById(todoId: number): Promise<any> {
-  return request.get(`${baseUrl}${todoId}`)
+// Utility function to get and parse todos from local storage
+function getTodosFromLocalStorage(): Todo[] {
+  const todos = localStorage.getItem(TODO_STORAGE_KEY)
+  return todos ? JSON.parse(todos) : []
 }
 
-//GET TODOS BASED ON GIVEN PRIORTIY (TRUE OR FALSE)
-export function getTodosByCompletion(isCompleted: boolean): Promise<any> {
-  return request.get(`${baseUrl}completed/${isCompleted}`)
+// Utility function to set todos in local storage
+function setTodosInLocalStorage(todos: Todo[]) {
+  localStorage.setItem(TODO_STORAGE_KEY, JSON.stringify(todos))
 }
 
-//--- POST REQUESTS ---//
-
-//ADD A NEW TODO
-export function addTodo(newTodo: NewTodo): Promise<any> {
-  return request.post(`${baseUrl}`).send(newTodo)
+// GET ALL TODOS
+export function getAllTodos(): Todo[] {
+  return getTodosFromLocalStorage()
 }
 
-//--- PATCH REQUESTS ---//
-
-//UPDATE COMPLETION OF A TODO GIVEN ITS ID
-export function completeTodo(todoId: number): Promise<any> {
-  return request.patch(`${baseUrl}complete/${todoId}`)
+// ADD A NEW TODO
+export function addTodo(newTodo: NewTodo): Todo[] {
+  const todos = getTodosFromLocalStorage()
+  const newId = todos.length > 0 ? Math.max(...todos.map((t) => t.id)) + 1 : 1
+  const todoToAdd = { ...newTodo, id: newId, isCompleted: false }
+  const updatedTodos = [...todos, todoToAdd]
+  setTodosInLocalStorage(updatedTodos)
+  return updatedTodos
 }
 
-//UPDATE A TODO GIVEN ITS ID AND NEW TODO TEXT
-export function updateTodo(updatedTodo: UpdatedTodo): Promise<any> {
-  return request.patch(`${baseUrl}${updatedTodo.id}`).send(updatedTodo)
+// REMOVE A TODO GIVEN ITS ID
+export function removeTodo(todoId: number): Todo[] {
+  const todos = getTodosFromLocalStorage()
+  const updatedTodos = todos.filter((todo) => todo.id !== todoId)
+  setTodosInLocalStorage(updatedTodos)
+  return updatedTodos
 }
 
-//UPDATE PRIORITY OF A TODO GIVEN ITS ID AND A NEW PRIORITY
-export function updateTodoPriority(
-  updatedTodoPriority: UpdatedTodoPriority
-): Promise<any> {
-  return request
-    .patch(`${baseUrl}priority/${updatedTodoPriority.id}`)
-    .send(updatedTodoPriority)
+// UPDATE COMPLETION OF A TODO GIVEN ITS ID
+export function completeTodo(todoId: number): Todo[] {
+  const todos = getTodosFromLocalStorage()
+  const updatedTodos = todos.map((todo) =>
+    todo.id === todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo
+  )
+  setTodosInLocalStorage(updatedTodos)
+  return updatedTodos
 }
 
-//--- DELETE REQUESTS ---//
-
-//DELETE ALL COMPLETED TODOS WHERE IS_COMPLETED IS TRUE
-export function clearCompletedTodos(): Promise<any> {
-  return request.delete(`${baseUrl}completed`)
+// DELETE ALL COMPLETED TODOS WHERE IS_COMPLETED IS TRUE
+export function clearCompletedTodos(): Todo[] {
+  const todos = getTodosFromLocalStorage()
+  const updatedTodos = todos.filter((todo) => !todo.isCompleted)
+  setTodosInLocalStorage(updatedTodos)
+  return updatedTodos
 }
 
-//REMOVE A TODO GIVEN ITS ID
-export function removeTodo(todoId: number): Promise<any> {
-  return request.delete(`${baseUrl}${todoId}`)
-}
+// You can similarly implement other functionalities if needed.
