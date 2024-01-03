@@ -53,7 +53,7 @@ export function addTodo(newTodo: NewTodo): Todo[] {
 
 //!--- PATCH REQUESTS ---//
 
-// UPDATE COMPLETION OF A TODO GIVEN ITS ID
+// UPDATE BY TOGGLING COMPLETION OF A TODO GIVEN ITS ID
 export function completeTodo(todoId: number): Todo[] {
   const todos = getTodosFromLocalStorage()
   const updatedTodos = todos.map((todo) =>
