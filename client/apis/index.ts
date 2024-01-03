@@ -64,8 +64,17 @@ export function toggleTodoCompletionById(todoId: number): Todo[] {
 }
 
 // UPDATE PRIORITY OF A TODO GIVEN ITS ID AND A NEW PRIORITY
-export function 
-
+export function updateTodoPriority(
+  todoId: number,
+  newPriority: number
+): Todo[] {
+  const todos = getTodosFromLocalStorage()
+  const updatedTodos = todos.map((todo) =>
+    todo.id === todoId ? { ...todo, priority: newPriority } : todo
+  )
+  setTodosInLocalStorage(updatedTodos)
+  return updatedTodos
+}
 
 //UPDATE A TODO GIVEN ITS ID AND NEW TODO TEXT
 
