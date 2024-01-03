@@ -19,28 +19,34 @@ function setTodosInLocalStorage(todos: Todo[]) {
   localStorage.setItem(TODO_STORAGE_KEY, JSON.stringify(todos))
 }
 
+//!--- GET REQUESTS ---//
+
 // GET ALL TODOS
 export function getAllTodos(): Todo[] {
   return getTodosFromLocalStorage()
 }
 
+//GET A TODO GIVEN ITS ID
+
+
+//GET TODOS BASED ON GIVEN COMPLETION (TRUE OR FALSE)
+
+
+
+//!--- POST REQUESTS ---//
+
 // ADD A NEW TODO
 export function addTodo(newTodo: NewTodo): Todo[] {
   const todos = getTodosFromLocalStorage()
-  const newId = todos.length > 0 ? Math.max(...todos.map((t) => t.id)) + 1 : 1
+  const newId = todos.length > 0 ? Math.max(...todos.map((todo) => todo.id)) + 1 : 1
   const todoToAdd = { ...newTodo, id: newId, isCompleted: false }
   const updatedTodos = [...todos, todoToAdd]
   setTodosInLocalStorage(updatedTodos)
   return updatedTodos
 }
 
-// REMOVE A TODO GIVEN ITS ID
-export function removeTodo(todoId: number): Todo[] {
-  const todos = getTodosFromLocalStorage()
-  const updatedTodos = todos.filter((todo) => todo.id !== todoId)
-  setTodosInLocalStorage(updatedTodos)
-  return updatedTodos
-}
+
+//!--- PATCH REQUESTS ---//
 
 // UPDATE COMPLETION OF A TODO GIVEN ITS ID
 export function completeTodo(todoId: number): Todo[] {
@@ -52,7 +58,25 @@ export function completeTodo(todoId: number): Todo[] {
   return updatedTodos
 }
 
-// DELETE ALL COMPLETED TODOS WHERE IS_COMPLETED IS TRUE
+
+// UPDATE PRIORITY OF A TODO GIVEN ITS ID AND A NEW PRIORITY
+
+//UPDATE A TODO GIVEN ITS ID AND NEW TODO TEXT
+
+
+//!--- DELETE REQUESTS ---//
+
+// REMOVE A TODO GIVEN ITS ID
+export function removeTodo(todoId: number): Todo[] {
+  const todos = getTodosFromLocalStorage()
+  const updatedTodos = todos.filter((todo) => todo.id !== todoId)
+  setTodosInLocalStorage(updatedTodos)
+  return updatedTodos
+}
+
+
+
+// DELETE ALL COMPLETED TODOS WHERE ISCOMPLETED IS TRUE
 export function clearCompletedTodos(): Todo[] {
   const todos = getTodosFromLocalStorage()
   const updatedTodos = todos.filter((todo) => !todo.isCompleted)
@@ -60,4 +84,4 @@ export function clearCompletedTodos(): Todo[] {
   return updatedTodos
 }
 
-// You can similarly implement other functionalities if needed.
+
