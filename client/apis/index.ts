@@ -53,8 +53,8 @@ export function addTodo(newTodo: NewTodo): Todo[] {
 
 //!--- PATCH REQUESTS ---//
 
-// UPDATE BY TOGGLING COMPLETION OF A TODO GIVEN ITS ID
-export function completeTodo(todoId: number): Todo[] {
+// TOGGLE COMPLETION OF A TODO GIVEN ITS ID
+export function toggleTodoCompletionById(todoId: number): Todo[] {
   const todos = getTodosFromLocalStorage()
   const updatedTodos = todos.map((todo) =>
     todo.id === todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo
@@ -64,6 +64,8 @@ export function completeTodo(todoId: number): Todo[] {
 }
 
 // UPDATE PRIORITY OF A TODO GIVEN ITS ID AND A NEW PRIORITY
+export function 
+
 
 //UPDATE A TODO GIVEN ITS ID AND NEW TODO TEXT
 
