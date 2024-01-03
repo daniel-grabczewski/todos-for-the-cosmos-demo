@@ -27,28 +27,29 @@ export function getAllTodos(): Todo[] {
 }
 
 //GET A TODO GIVEN ITS ID
-export function getTodoById(todoId : number) {
+export function getTodoById(todoId: number) {
   const todos = getTodosFromLocalStorage()
   return todos.find((todo) => todo.id === todoId)
 }
 
-
 //GET TODOS BASED ON GIVEN COMPLETION (TRUE OR FALSE)
-
-
+export function getTodosByCompletion(isCompleted: boolean) {
+  const todos = getTodosFromLocalStorage()
+  return todos.filter((todo) => todo.isCompleted === isCompleted)
+}
 
 //!--- POST REQUESTS ---//
 
 // ADD A NEW TODO
 export function addTodo(newTodo: NewTodo): Todo[] {
   const todos = getTodosFromLocalStorage()
-  const newId = todos.length > 0 ? Math.max(...todos.map((todo) => todo.id)) + 1 : 1
+  const newId =
+    todos.length > 0 ? Math.max(...todos.map((todo) => todo.id)) + 1 : 1
   const todoToAdd = { ...newTodo, id: newId, isCompleted: false }
   const updatedTodos = [...todos, todoToAdd]
   setTodosInLocalStorage(updatedTodos)
   return updatedTodos
 }
-
 
 //!--- PATCH REQUESTS ---//
 
@@ -62,11 +63,9 @@ export function completeTodo(todoId: number): Todo[] {
   return updatedTodos
 }
 
-
 // UPDATE PRIORITY OF A TODO GIVEN ITS ID AND A NEW PRIORITY
 
 //UPDATE A TODO GIVEN ITS ID AND NEW TODO TEXT
-
 
 //!--- DELETE REQUESTS ---//
 
@@ -78,8 +77,6 @@ export function removeTodo(todoId: number): Todo[] {
   return updatedTodos
 }
 
-
-
 // DELETE ALL COMPLETED TODOS WHERE ISCOMPLETED IS TRUE
 export function clearCompletedTodos(): Todo[] {
   const todos = getTodosFromLocalStorage()
@@ -87,5 +84,3 @@ export function clearCompletedTodos(): Todo[] {
   setTodosInLocalStorage(updatedTodos)
   return updatedTodos
 }
-
-
