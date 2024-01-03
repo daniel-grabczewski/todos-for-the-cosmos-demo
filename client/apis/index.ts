@@ -76,7 +76,18 @@ export function updateTodoPriority(
   return updatedTodos
 }
 
-//UPDATE A TODO GIVEN ITS ID AND NEW TODO TEXT
+//UPDATE A TODO'S CONTENT GIVEN ITS ID AND NEW TODO CONTENT
+export function updateTodoContent(
+  todoId: number,
+  updatedTodoContent: string
+): Todo[] {
+  const todos = getTodosFromLocalStorage()
+  const updatedTodos = todos.map((todo) =>
+    todo.id === todoId ? { ...todo, todo: updatedTodoContent } : todo
+  )
+  setTodosInLocalStorage(updatedTodos)
+  return updatedTodos
+}
 
 //!--- DELETE REQUESTS ---//
 
