@@ -27,6 +27,10 @@ export function getAllTodos(): Todo[] {
 }
 
 //GET A TODO GIVEN ITS ID
+export function getTodoById(todoId : number) {
+  const todos = getTodosFromLocalStorage()
+  return todos.find((todo) => todo.id === todoId)
+}
 
 
 //GET TODOS BASED ON GIVEN COMPLETION (TRUE OR FALSE)
