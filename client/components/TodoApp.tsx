@@ -26,10 +26,10 @@ const TodoApp = () => {
     setTodos(getAllTodos())
   }
 
-  function handleCheck(id: number, event: React.ChangeEvent<HTMLInputElement>) {
-    toggleTodoCompletionById(id)
-    setTodos(getAllTodos())
-  }
+  const handleCheck = (id: number) => {
+    toggleTodoCompletionById(id);
+    setTodos(getAllTodos());
+  };
 
   return (
     <div className="todo-box">
