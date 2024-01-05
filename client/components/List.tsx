@@ -1,31 +1,25 @@
 import { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../hooks'
-import { checkboxTodo, deleteTodo, fetchTodos } from '../slices/todos'
 import '../styles/index.css'
+import { getAllTodos, removeTodo, toggleTodoCompletionById } from '../apis'
 
 function List() {
-  const dispatch = useAppDispatch()
-  const todos = useAppSelector((state) => state.todos)
   const [hoveredId, setHoveredId] = useState<number | null>(null)
+  const todos = getAllTodos()
 
   const [localTodos, setLocalTodos] = useState(todos)
 
   const [selectedButton, setSelectedButton] = useState('All')
 
   useEffect(() => {
-    dispatch(fetchTodos())
-  }, [])
-
-  useEffect(() => {
     setLocalTodos(todos)
   }, [todos])
 
   function handleDelete(id: number) {
-    dispatch(deleteTodo(id))
+    removeTodo(id)
   }
 
   function handleCheck(id: number, event: React.ChangeEvent<HTMLInputElement>) {
-    dispatch(checkboxTodo(id))
+    toggleTodoCompletionById(id)
   }
 
   function showAllHandler() {
