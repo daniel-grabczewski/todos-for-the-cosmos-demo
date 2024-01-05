@@ -10,20 +10,18 @@ function List() {
 
   const [selectedButton, setSelectedButton] = useState('All')
 
-  useEffect(() => {
-    setLocalTodos(todos)
-  }, [todos])
-
   function handleDelete(id: number) {
     removeTodo(id)
+    setLocalTodos(getAllTodos())
   }
 
   function handleCheck(id: number, event: React.ChangeEvent<HTMLInputElement>) {
     toggleTodoCompletionById(id)
+    setLocalTodos(getAllTodos())
   }
 
   function showAllHandler() {
-    setLocalTodos(todos)
+    setLocalTodos(getAllTodos())
     setSelectedButton('All')
   }
 
@@ -47,7 +45,7 @@ function List() {
         <div className="added-todos-container">
           {localTodos.map((element) => (
             <div
-            className = 'added-todo'
+              className="added-todo"
               style={{
                 textDecoration: element.isCompleted ? 'line-through' : 'none',
               }}
@@ -57,7 +55,7 @@ function List() {
                 type="checkbox"
                 checked={element.isCompleted}
                 onChange={(event) => handleCheck(element.id, event)}
-                className = 'checkbox-container'
+                className="checkbox-container"
               />
               <div style={{ width: '375px' }}>
                 <p className="added-todo-text">{element.todo}</p>
@@ -67,7 +65,7 @@ function List() {
                 onClick={() => handleDelete(element.id)}
                 onMouseOver={() => setHoveredId(element.id)}
                 onMouseOut={() => setHoveredId(null)}
-                className = 'delete-button-container'
+                className="delete-button-container"
               >
                 <svg
                   width="15"
