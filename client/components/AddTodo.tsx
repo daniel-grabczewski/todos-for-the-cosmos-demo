@@ -40,7 +40,9 @@ function AddTodo({ onAddTodo }: AddTodoProps) {
           <h3 className="change-priority-header">Priority:</h3>
         </label>
         <Slider
-          className="slider-length"
+          //className="slider-length"
+          //Changed slider-length to inline, due to issues with deployment not using the class
+          style = {{ marginTop : '3px', width : '128px'}}
           onChange={(value) => {
             handleChange({
               target: {

@@ -201,29 +201,29 @@ button:hover {
 }
 
 .rc-slider-track {
-  transition: width 0.3s ease;
-  background-color: rgba(242,242,242,0.10);
-  height: 4px; 
+  transition: width 0.3s ease !important;
+  background-color: rgba(242,242,242,0.10) !important;
+  height: 4px !important; 
 }
 
 .rc-slider-rail {
-  background-color: rgba(242,242,242,0.55);
-  height: 4px; 
+  background-color: rgba(242,242,242,0.55) !important;
+  height: 4px !important; 
 }
 
 .rc-slider-handle {
-  transition: left 0.3s ease;
-  width: 20px; 
-  height: 20px; 
-  background-color: #ffffff;
-  border: none;
-  margin-top: -8px; 
-  opacity: 1;
+  transition: left 0.3s ease !important;
+  width: 20px !important; 
+  height: 20px !important; 
+  background-color: #ffffff !important;
+  border: none !important;
+  margin-top: -8px !important; 
+  opacity: 1 !important;
 }
 
 .rc-slider-handle:focus {
-  outline: none;
-  box-shadow: none; 
+  outline: none !important;
+  box-shadow: none !important; 
 }
 
 .rc-slider-tooltip {
