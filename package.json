@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Todos for the cosmos Demo Version",
   "main": "server/index.js",
+  "homepage": "https://daniel-grabczewski.github.io/todos-for-the-cosmos-demo",
   "scripts": {
+    "deploy": "npm run build && gh-pages -d dist",
     "build": "vite build",
     "start": "serve -s dist -l 3000",
     "dev": "vite",
