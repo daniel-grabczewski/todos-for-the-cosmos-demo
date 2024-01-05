@@ -47,6 +47,7 @@
   },
   "browserslist": "> 2%, not dead",
   "devDependencies": {
-    "@types/granim": "^2.0.1"
+    "@types/granim": "^2.0.1",
+    "gh-pages": "^6.1.1"
   }
 }
