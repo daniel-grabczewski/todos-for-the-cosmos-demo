@@ -3,6 +3,7 @@ import React, { FormEvent, useState } from 'react'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import '../styles/index.css'
+import { addTodo } from '../apis'
 
 interface Form {
   todo: string
@@ -39,6 +40,7 @@ function AddTodo() {
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
+    addTodo(form)
     setForm({ todo: '', priority: 3 })
   }
 
