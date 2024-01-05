@@ -4,14 +4,10 @@
   "description": "Todos for the cosmos Demo Version",
   "main": "server/index.js",
   "scripts": {
-    "build": "run-s build:client build:server",
-    "build:client": "vite build",
-    "build:server": "tsc -p server/tsconfig.json",
-    "start": "ts-node dist/server/index.js",
+    "build": "vite build",
+    "start": "serve -s dist -l 3000",
+    "dev": "vite",
     "test": "vitest",
-    "dev": "run-p dev:server dev:client",
-    "dev:client": "wait-on tcp:3000 && vite",
-    "dev:server": "nodemon server/index.ts",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
