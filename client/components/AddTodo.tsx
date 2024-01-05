@@ -1,7 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 import React, { FormEvent, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../hooks'
-import { postTodoThenFetch } from '../slices/todos'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import '../styles/index.css'
@@ -20,7 +18,6 @@ type CustomChangeEvent = {
 
 function AddTodo() {
   const [form, setForm] = useState({ todo: '', priority: 3 } as Form)
-  const dispatch = useAppDispatch()
 
   function handleChange(
     event: React.ChangeEvent<HTMLInputElement> | CustomChangeEvent
@@ -42,8 +39,6 @@ function AddTodo() {
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
-
-    dispatch(postTodoThenFetch(form))
     setForm({ todo: '', priority: 3 })
   }
 
