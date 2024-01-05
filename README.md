@@ -1,12 +1,5 @@
-# Todos For The Cosmos
+# Todos For The Cosmos Demo Version
 
+This version of Todos For The Cosmos is intended to be a lightweight demo of the original, but with identical functionality. It can be [viewed online here](https://daniel-grabczewski.github.io/todos-for-the-cosmos-demo/)
 
-## Setup
-- Clone this repo and navigate to its directory
-- Run ```npm install```
-- Run ```npm run knex migrate:latest```
-- Run ```npm run knex seed:run```
-- Run ```npm run dev```, which will start running the app
-- Navigate to [http://localhost:5173](http://localhost:5173) in your browser
-- Now you can start making Todo's!
-
+To view the original Todos For The Cosmos repository, which utilises Redux and an SQLite3 database, [click here](https://github.com/daniel-grabczewski/todos-for-the-cosmos)
